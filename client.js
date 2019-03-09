@@ -5,7 +5,7 @@ $(document).ready(readyNow);
 function readyNow(){
     console.log('in JQ');
     $('#submitButton').on('click', addEmployee);
-    $('#tableInputs').on('click', '#removeButton', removeEmployee);
+    $('.tableInputs').on('click', '.newRow', '.removeButton',  removeEmployee);
 
 }
 
@@ -41,9 +41,16 @@ function addEmployee(){
 
 function removeEmployee() {
     console.log('in RemoveEmployee');
-    for(let i = 0; i<totalEmployees.length; i++) {
-            totalEmployees.pop();
-     }//end for
+   let employeeInfo = $(this).data();
+   console.log($(this));
+   console.log(`in employee info`, employeeInfo);
+
+   for( let i = 0; i<totalEmployees.length; i++){
+       let info = totalEmployees[i];
+       if( info.idNumber === employeeInfo.idNumber){
+           totalEmployees.splice(i, 1);
+       }
+   }
     displayInTable();
     $( '#idNumberInTwo').val('')
 }// end removeEmployee function
@@ -66,10 +73,10 @@ function validateInputs() {
 function displayInTable(){
     $('.tableInputs').empty();
     $('#addMonthlyTotal').empty();
-    let removeThisEmployee = (`<button id=removeThisEmployee>Remove Employee</button>`);
-    let counter = 0;
     for (let item of totalEmployees){
-        $('.tableInputs').append(`<tr><td>${item.firstName}</td><td>${item.lastName}</td><td>${item.idNumber}</td><td>${item.jobTitle}</td><td>$${item.annualSalary}</td><td id="${counter ++}">${removeThisEmployee}</td></tr>`);
+        let $tr = $(`<tr class = "newRow"><td>${item.firstName}</td><td>${item.lastName}</td><td>${item.idNumber}</td><td>${item.jobTitle}</td><td>$${item.annualSalary}</td><td id= "tdStyle"><button class= "removeButton">Remove Employee</button></td></tr>`);
+        $tr.data(item);
+        $('.tableInputs').append($tr);
     }//end for loop
     calculateMonthlyCost();
 }//end display
