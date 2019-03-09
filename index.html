@@ -6,7 +6,7 @@
     <title>Weekend Challenge jQuery Salary Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="jquery-3.3.1.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Charm|Bitter" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css">
     <script src="client.js"></script>
 </head>
@@ -14,9 +14,10 @@
     <header>Salary Calculator</header>
     
     <div class="employeeInputs">
+        <h2>Please enter the following information:</h2>
         <input type="text" id="firstNameIn" placeholder="First Name"/>
         <input type="text" id="lastNameIn"   placeholder="Last Name"/>
-        <input type="text" id="idNumberIn" placeholder="ID Number"/>
+        <input type="number" id="idNumberIn" placeholder="ID Number"/>
         <input type="text" id="jobTitleIn" placeholder="Job Title"/>
         <input  type="number" id="annualSalaryIn" placeholder="Annual Salary"/>
         <button id="submitButton">Submit</button>
@@ -42,7 +43,7 @@
     </table>
     <div class="monthlyDiv">
         <h3>Total Monthly Cost: <span id='addMonthlyTotal'>$0</span></h3>
-       <label>To Remove Employee: Enter in Employee Number</label>
+       <label id= "removeEmployeeLabel">To Remove Employee: Enter in Employee Number</label>
         <button id="removeEmployeeButton">Remove Employee</button>
     </div>
     

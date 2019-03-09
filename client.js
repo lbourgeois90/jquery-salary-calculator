@@ -20,6 +20,11 @@ function addEmployee(){
     }//end employeeObject
     totalEmployees.push( newEmployee );
     displayInTable();
+    $( '#firstNameIn').val('');
+    $( '#lastNameIn' ).val('');
+    $( '#idNumberIn').val('');
+    $( '#jobTitleIn').val('');
+    $( '#annualSalaryIn').val('');
 
 }//end addEmployee
 
@@ -28,7 +33,7 @@ function removeEmployee() {
         if ((totalEmployees[i].idNumber) === ($( '#idNumberIn').val())) {
             totalEmployees.splice(i, 1);
         }//end if
-    }//end for
+    }// end for
     displayInTable();
 }// 
 
