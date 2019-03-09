@@ -42,13 +42,8 @@ function addEmployee(){
 function removeEmployee() {
     console.log('in RemoveEmployee');
     for(let i = 0; i<totalEmployees.length; i++) {
-        if ((totalEmployees[i].idNumber) === ($( '#idNumberInTwo').val())) {
-            totalEmployees.splice(i, 1);
-        }//end if
-    }// end for
-    if (($( '#idNumberInTwo').val()) === ''){
-        alert(`Please Enter an Employee ID`);
-    }//end if 
+            totalEmployees.pop();
+     }//end for
     displayInTable();
     $( '#idNumberInTwo').val('')
 }// end removeEmployee function
@@ -89,4 +84,3 @@ function calculateMonthlyCost(){
        return $('#addMonthlyTotal').css('background-color','white').append('$', totalMonthly.toFixed(2));
     }
 }//end calculateMonthlyFunction
-
