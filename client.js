@@ -1,5 +1,4 @@
 const totalEmployees = [];
-let totalMonthly = 0;
 
 $(document).ready(readyNow);
 
@@ -19,7 +18,6 @@ function addEmployee(){
 
     }//end employeeObject
     totalEmployees.push( newEmployee );
-    calculateMonthlyCost();
     displayInTable();
 
 }//end addEmployee
@@ -30,14 +28,24 @@ function displayInTable(){
     for (let item of totalEmployees){
         $('.tableInputs').append(`<tr><td>${item.firstName}</td><td>${item.lastName}</td><td>${item.idNumber}</td><td>${item.jobTitle}</td><td>${item.annualSalary}</td></tr>`);
     }//end for loop
-    $('#addMonthlyTotal').append(totalMonthly);
-
+    calculateMonthlyCost();
+    // if(totalMonthly > 20000) {
+    //     $('#addMonthlyTotal').css('background-color','red').append('$',totalMonthly);
+    // }//end if
+    // else {
+    //    return $('#addMonthlyTotal').append('$', totalMonthly);
+    // }
 }//end display
 
 function calculateMonthlyCost(){
+    let totalMonthly = 0;
     for( let i = 0; i<totalEmployees.length; i++) {
-    totalMonthly = Number(totalEmployees[i].annualSalary) + totalMonthly;
+    totalMonthly += Number(totalEmployees[i].annualSalary) /12;
     }//end for
-    totalMonthly = (totalMonthly / 12);
-  return totalMonthly;
+    if(totalMonthly > 20000) {
+        $('#addMonthlyTotal').css('background-color','red').append('$',totalMonthly);
+    }//end if
+    else {
+       return $('#addMonthlyTotal').append('$', totalMonthly);
+    }
 }//end calculateMonthlyFunction
