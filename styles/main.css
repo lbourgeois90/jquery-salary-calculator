@@ -67,7 +67,7 @@ td{
 }
 
 
-#firstNameIn, #lastNameIn, #idNumberIn, #jobTitleIn, #annualSalaryIn {
+#firstNameIn, #lastNameIn, #idNumberIn, #jobTitleIn, #annualSalaryIn, #idNumberInTwo{
     font-family:'Bitter', serif;
     color: #2C3852;
     font-weight:bold;

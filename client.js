@@ -29,19 +29,21 @@ function addEmployee(){
 }//end addEmployee
 
 function removeEmployee() {
+    console.log('in RemoveEmployee');
     for(let i = 0; i<totalEmployees.length; i++) {
-        if ((totalEmployees[i].idNumber) === ($( '#idNumberIn').val())) {
+        if ((totalEmployees[i].idNumber) === ($( '#idNumberInTwo').val())) {
             totalEmployees.splice(i, 1);
         }//end if
     }// end for
     displayInTable();
+    $( '#idNumberInTwo').val('')
 }// 
 
 function displayInTable(){
     $('.tableInputs').empty();
     $('#addMonthlyTotal').empty();
     for (let item of totalEmployees){
-        $('.tableInputs').append(`<tr><td>${item.firstName}</td><td>${item.lastName}</td><td>${item.idNumber}</td><td>${item.jobTitle}</td><td>${item.annualSalary}</td></tr>`);
+        $('.tableInputs').append(`<tr><td>${item.firstName}</td><td>${item.lastName}</td><td>${item.idNumber}</td><td>${item.jobTitle}</td><td>$${item.annualSalary}</td></tr>`);
     }//end for loop
     calculateMonthlyCost();
     // if(totalMonthly > 20000) {
@@ -58,9 +60,9 @@ function calculateMonthlyCost(){
     totalMonthly += Number(totalEmployees[i].annualSalary) /12;
     }//end for
     if(totalMonthly > 20000) {
-        $('#addMonthlyTotal').css('background-color','red').append('$',totalMonthly);
+        $('#addMonthlyTotal').css('background-color','hsla(0, 100%, 50%, 0.5)').append('$',totalMonthly.toFixed(2));
     }//end if
     else {
-       return $('#addMonthlyTotal').append('$', totalMonthly);
+       return $('#addMonthlyTotal').append('$', totalMonthly.toFixed(2));
     }
 }//end calculateMonthlyFunction
