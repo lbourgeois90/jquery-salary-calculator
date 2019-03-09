@@ -30,12 +30,13 @@ table {
     width: 100%;
   }
   
-  th, td {
+  th, td, tfoot {
     border: 3px solid #2C3852;
     font-family:'Bitter', serif;
     color: #2C3852;
     font-weight:bold;
     font-size: 20px;
+
   }
   
 td{
@@ -78,7 +79,7 @@ td{
     font-size: 18px;
 }
 
-#submitButton{
+#submitButton {
     font-family:'Bitter', serif;
     color: #2C3852;
     font-weight:bold;
@@ -89,10 +90,20 @@ td{
     font-size:18px;
 }
 
-#removeEmployeeLabel, #removeEmployeeButton{
+#removeEmployeeButton {
+    font-family:'Bitter', serif;
+    color: #2C3852;
+    font-weight:bold;
+    background-color: #D6D6D6;
+    margin: 15px;
+    height: 30px;
+    width: 200px;
+    font-size:18px;
+}
+
+#removeEmployeeLabel {
 font-family:'Bitter', serif;
     color: #2C3852;
     font-weight:bold;
     font-size: 20px;
-}
 }
