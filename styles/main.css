@@ -1,4 +1,19 @@
 
+header{
+   background-image: url(scallop.jpg); 
+   background-size: 100% , 100%;
+   padding: 40px;
+  font-family: 'Charm', cursive;
+  color: #C80F7E;
+  font-size: 50px;
+  text-align: center;
+}
+
+.employeeInputs {
+    margin: 20px;
+    
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -17,4 +32,8 @@ table {
     background-color: #2C3852;
     color: white;
     font-size: 18px;
+  }
+
+  hr{
+      border: 2px solid #C80F7E;
   }

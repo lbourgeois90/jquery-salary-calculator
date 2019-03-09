@@ -5,6 +5,7 @@ $(document).ready(readyNow);
 function readyNow(){
     console.log('in JQ');
     $('#submitButton').on('click', addEmployee);
+    $('#removeEmployeeButton').on('click', removeEmployee);
 
 }
 
@@ -21,6 +22,15 @@ function addEmployee(){
     displayInTable();
 
 }//end addEmployee
+
+function removeEmployee() {
+    for(let i = 0; i<totalEmployees.length; i++) {
+        if ((totalEmployees[i].idNumber) === ($( '#idNumberIn').val())) {
+            totalEmployees.splice(i, 1);
+        }//end if
+    }//end for
+    displayInTable();
+}// 
 
 function displayInTable(){
     $('.tableInputs').empty();
