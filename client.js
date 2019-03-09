@@ -9,23 +9,34 @@ function readyNow(){
 
 }
 
-function addEmployee(){
+function getEmployeeInfo(){
     let newEmployee = {
         firstName: $( '#firstNameIn').val(),
         lastName: $( '#lastNameIn' ).val(),
         idNumber: $( '#idNumberIn').val() ,
         jobTitle: $( '#jobTitleIn').val() ,
         annualSalary: $( '#annualSalaryIn').val()
-
     }//end employeeObject
-    totalEmployees.push( newEmployee );
-    displayInTable();
+    return newEmployee;
+}
+
+function addEmployee(){
+   if (validateInputs() ) {
+       let employee = getEmployeeInfo();
+
+    totalEmployees.push( employee );
+    
     $( '#firstNameIn').val('');
     $( '#lastNameIn' ).val('');
     $( '#idNumberIn').val('');
     $( '#jobTitleIn').val('');
     $( '#annualSalaryIn').val('');
 
+    displayInTable();
+   }//end if
+   else { 
+       alert(`Please enter in all information requested`);
+   }
 }//end addEmployee
 
 function removeEmployee() {
@@ -35,9 +46,27 @@ function removeEmployee() {
             totalEmployees.splice(i, 1);
         }//end if
     }// end for
+    if (($( '#idNumberInTwo').val()) === ''){
+        alert(`Please Enter an Employee ID`);
+    }//end if 
     displayInTable();
     $( '#idNumberInTwo').val('')
-}// 
+}// end removeEmployee function
+
+function validateInputs() {
+    let firstName = $( '#firstNameIn').val();
+    let lastName = $( '#lastNameIn' ).val();
+    let idNumber = $( '#idNumberIn').val();
+    let jobTitle = $( '#jobTitleIn').val();
+    let annualSalary = $( '#annualSalaryIn').val();
+
+    if( firstName !== '' && lastName !== '' && idNumber !== '' && jobTitle !== '' && annualSalary !== '') {
+        return true;
+    }//end if statement
+    return false;
+}//end validateInput func
+  
+  
 
 function displayInTable(){
     $('.tableInputs').empty();
@@ -46,12 +75,6 @@ function displayInTable(){
         $('.tableInputs').append(`<tr><td>${item.firstName}</td><td>${item.lastName}</td><td>${item.idNumber}</td><td>${item.jobTitle}</td><td>$${item.annualSalary}</td></tr>`);
     }//end for loop
     calculateMonthlyCost();
-    // if(totalMonthly > 20000) {
-    //     $('#addMonthlyTotal').css('background-color','red').append('$',totalMonthly);
-    // }//end if
-    // else {
-    //    return $('#addMonthlyTotal').append('$', totalMonthly);
-    // }
 }//end display
 
 function calculateMonthlyCost(){
@@ -63,6 +86,7 @@ function calculateMonthlyCost(){
         $('#addMonthlyTotal').css('background-color','hsla(0, 100%, 50%, 0.5)').append('$',totalMonthly.toFixed(2));
     }//end if
     else {
-       return $('#addMonthlyTotal').append('$', totalMonthly.toFixed(2));
+       return $('#addMonthlyTotal').css('background-color','white').append('$', totalMonthly.toFixed(2));
     }
 }//end calculateMonthlyFunction
+
