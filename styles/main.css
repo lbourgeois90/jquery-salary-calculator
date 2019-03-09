@@ -90,7 +90,7 @@ td{
     font-size:18px;
 }
 
-#removeEmployeeButton {
+#removeEmployeeButton, #removeThisEmployee {
     font-family:'Bitter', serif;
     color: #2C3852;
     font-weight:bold;
@@ -107,4 +107,9 @@ font-family:'Bitter', serif;
     font-weight:bold;
     font-size: 20px;
     margin: 20px;
+}
+
+#removeButtonBorder{
+    border: 0px;
+    background-color: white;
 }

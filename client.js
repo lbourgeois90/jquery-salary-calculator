@@ -5,7 +5,7 @@ $(document).ready(readyNow);
 function readyNow(){
     console.log('in JQ');
     $('#submitButton').on('click', addEmployee);
-    $('#removeEmployeeButton').on('click', removeEmployee);
+    $('#tableInputs').on('click', '#removeButton', removeEmployee);
 
 }
 
@@ -66,8 +66,10 @@ function validateInputs() {
 function displayInTable(){
     $('.tableInputs').empty();
     $('#addMonthlyTotal').empty();
+    let removeThisEmployee = (`<button id=removeThisEmployee>Remove Employee</button>`);
+    let counter = 0;
     for (let item of totalEmployees){
-        $('.tableInputs').append(`<tr><td>${item.firstName}</td><td>${item.lastName}</td><td>${item.idNumber}</td><td>${item.jobTitle}</td><td>$${item.annualSalary}</td></tr>`);
+        $('.tableInputs').append(`<tr><td>${item.firstName}</td><td>${item.lastName}</td><td>${item.idNumber}</td><td>${item.jobTitle}</td><td>$${item.annualSalary}</td><td id="${counter ++}">${removeThisEmployee}</td></tr>`);
     }//end for loop
     calculateMonthlyCost();
 }//end display
