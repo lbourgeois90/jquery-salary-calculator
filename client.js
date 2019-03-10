@@ -6,7 +6,7 @@ function readyNow(){
     console.log('in JQ');
     $('#submitButton').on('click', addEmployee);
     $('.tableInputs').on('click', '.newRow', '.removeButton',  removeEmployee);
-    $('#totalMonthlyCostLabel').hide();
+    $('#totalMonthlyCostLabel').hide()
 }
 
 function getEmployeeInfo(){
@@ -31,7 +31,6 @@ function addEmployee(){
     $( '#idNumberIn').val('');
     $( '#jobTitleIn').val('');
     $( '#annualSalaryIn').val('');
-
     displayInTable();
    }//end if
    else { 
@@ -41,6 +40,7 @@ function addEmployee(){
 
 function removeEmployee() {
     console.log('in RemoveEmployee');
+    
    let employeeInfo = $(this).data();
    console.log($(this));
    console.log(`in employee info`, employeeInfo);
@@ -73,6 +73,7 @@ function validateInputs() {
 function displayInTable(){
     $('.tableInputs').empty();
     $('#addMonthlyTotal').empty();
+    $('#totalMonthlyCostLabel').hide()
     for (let item of totalEmployees){
         let $tr = $(`<tr class = "newRow"><td>${item.firstName}</td><td>${item.lastName}</td><td>${item.idNumber}</td><td>${item.jobTitle}</td><td>$${item.annualSalary}</td><td id= "tdStyle"><button class= "removeButton">Remove Employee</button></td></tr>`);
         $tr.data(item);
@@ -88,9 +89,9 @@ function calculateMonthlyCost(){
     totalMonthly += Number(totalEmployees[i].annualSalary) /12;
     }//end for
     if(totalMonthly > 20000) {
-        $('#addMonthlyTotal').css('background-color','hsla(0, 100%, 50%, 0.5)').append('$',totalMonthly.toFixed(2));
+        $('#addMonthlyTotal').css({'background-color':'red', opacity: '0.8'}).append('$',totalMonthly.toFixed(2));
     }//end if
     else {
-       return $('#addMonthlyTotal').css('background-color','white').append('$', totalMonthly.toFixed(2));
+       return $('#addMonthlyTotal').css({'background-color':'white', opacity:'1.0'}).append('$', totalMonthly.toFixed(2));
     }
 }//end calculateMonthlyFunction
