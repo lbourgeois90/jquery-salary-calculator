@@ -6,7 +6,7 @@ function readyNow(){
     console.log('in JQ');
     $('#submitButton').on('click', addEmployee);
     $('.tableInputs').on('click', '.newRow', '.removeButton',  removeEmployee);
-
+    $('#totalMonthlyCostLabel').hide();
 }
 
 function getEmployeeInfo(){
@@ -78,6 +78,7 @@ function displayInTable(){
         $tr.data(item);
         $('.tableInputs').append($tr);
     }//end for loop
+    $('#totalMonthlyCostLabel').show();
     calculateMonthlyCost();
 }//end display
 
